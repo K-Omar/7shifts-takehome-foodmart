@@ -18,24 +18,21 @@ struct FoodItemListView: View {
         ]
     
     var body: some View {
-        LazyVGrid(columns: columns) {
-            ForEach(foodViewModel.filteredFoods) { food in
-                FoodItemView(food: food)
+        ScrollView {
+            LazyVGrid(columns: columns) {
+                ForEach(foodViewModel.filteredFoods) { food in
+                    FoodItemView(food: food)
+                }
             }
+            .padding(.horizontal)
         }
-        .padding(.horizontal)
     }
 }
 
 #Preview {
     @Previewable @StateObject var viewModel = FoodViewModel()
     
-    ScrollView {
-        FoodItemListView()
-            .task {
-                await viewModel.loadFoods()
-                await viewModel.loadCategories()
-            }
-    }
-    .environmentObject(viewModel)
+    FoodItemListView()
+        .environmentObject(viewModel)
+        .task(viewModel.loadAppData)
 }

@@ -34,8 +34,5 @@ struct CategoryRow: View {
     
     CategoryFilterListView()
         .environmentObject(viewModel)
-        .task {
-            await viewModel.loadFoods()
-            await viewModel.loadCategories()
-        }
+        .task(viewModel.loadAppData)
 }

@@ -13,24 +13,35 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView {
-              FoodItemListView()
-            }
-            .sheet(isPresented: $isShowingCategoryFilters) {
-               CategoryFilterListView()
-            }
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    categoryFilterButton
+            Group {
+                switch foodViewModel.loadState {
+                case .failed:
+                    LoadFailedView(
+                        error: foodViewModel.loadError,
+                        retry: foodViewModel.loadAppData
+                    )
+                    
+                default:
+                    if isLoading {
+                        ProgressView()
+                            .controlSize(.extraLarge)
+                    } else {
+                        FoodItemListView()
+                            .sheet(isPresented: $isShowingCategoryFilters) {
+                                CategoryFilterListView()
+                            }
+                            .toolbar {
+                                ToolbarItem(placement: .topBarTrailing) {
+                                    categoryFilterButton
+                                }
+                            }
+                    }
                 }
             }
             .navigationTitle("Food")
             .toolbarTitleDisplayMode(.inlineLarge)
-            .task {
-                await foodViewModel.loadFoods()
-                await foodViewModel.loadCategories()
-            }
         }
+        .task(foodViewModel.loadAppData)
     }
     
     var categoryFilterButton: some View {
@@ -39,6 +50,10 @@ struct ContentView: View {
         } label: {
             Image(systemName: "slider.horizontal.3")
         }
+    }
+    
+    var isLoading: Bool {
+        foodViewModel.categories.isEmpty || foodViewModel.foods.isEmpty
     }
 }
 

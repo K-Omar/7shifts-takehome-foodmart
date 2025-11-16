@@ -16,7 +16,13 @@ struct FoodItemView: View {
             AsyncImage(url: URL(string: food.imageUrl)) { phase in
                 switch phase {
                 case .empty:
-                    ProgressView()
+                    ZStack {
+                        Rectangle()
+                            .fill(.secondary.opacity(0.5))
+                            .aspectRatio(1, contentMode: .fit)
+                        
+                        ProgressView()
+                    }
                 case .success(let image):
                     image
                         .resizable()
@@ -38,21 +44,11 @@ struct FoodItemView: View {
                     .font(.headline)
                     .fontWeight(.medium)
                 
-                    //TODO: Add proper category here
                 Text(foodViewModel.category(for: food))
                     .font(.subheadline)
             }
         }
         .frame(maxWidth: .infinity)
-        .onAppear {
-            print("Food: \(food.name)")
-            print("Image URL: \(food.imageUrl)")
-            if let url = URL(string: food.imageUrl) {
-                print("URL is valid: \(url)")
-            } else {
-                print("Invalid URL!")
-            }
-        }
     }
 }
 

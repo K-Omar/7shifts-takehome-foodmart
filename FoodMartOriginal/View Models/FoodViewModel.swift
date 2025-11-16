@@ -10,6 +10,14 @@ import Foundation
 
 @MainActor
 class FoodViewModel: ObservableObject {
+    
+    enum LoadState {
+        case loading, loaded, failed
+    }
+    
+    @Published var loadState: LoadState = .loading
+    @Published var loadError: (any Error)?
+    
     @Published var categories = [Category]()
     @Published var foods = [Food]()
     
@@ -19,35 +27,42 @@ class FoodViewModel: ObservableObject {
         return enabledCategoryUuids.isEmpty ? foods : foods.filter { enabledCategoryUuids.contains($0.categoryUuid) }
     }
     
-    func loadFoods() async {
-        do {
-            let url = URL(string: "https://7shifts.github.io/mobile-takehome/api/food_items.json")!
-            let (data, _) = try await URLSession.shared.data(from: url)
-            let decoder = JSONDecoder()
-            foods = try decoder.decode([Food].self, from: data)
-        } catch {
-            print(error.localizedDescription)
-        }
+    func loadAppData() async {
+        loadState = .loading
         
-    }
-    
-    func loadCategories() async {
         do {
-            let url = URL(string: "https://7shifts.github.io/mobile-takehome/api/food_item_categories.json")!
-            let (data, _) = try await URLSession.shared.data(from: url)
-            let decoder = JSONDecoder()
-            categories = try decoder.decode([Category].self, from: data)
+            async let foodsData = loadFoods()
+            async let categoriesData = loadCategories()
+            
+            let (foods, categories) = try await (foodsData, categoriesData)
+            
+            // Update the published properties
+            self.foods = foods
+            self.categories = categories
+            
+            loadState = .loaded
         } catch {
-            print(error.localizedDescription)
+            loadState = .failed
+            loadError = error
         }
     }
     
     func category(for food: Food) -> String {
-        print(categories.count)
         let category = categories.first(where: { $0.uuid == food.categoryUuid })
-        
-        print(category)
-        
         return category?.name ?? ""
+    }
+    
+    private func loadFoods() async throws -> [Food] {
+        let url = URL(string: "https://7shifts.github.io/mobile-takehome/api/food_items.json")!
+        let (data, _) = try await URLSession.shared.data(from: url)
+        let decoder = JSONDecoder()
+        return try decoder.decode([Food].self, from: data)
+    }
+    
+    private func loadCategories() async throws -> [Category] {
+        let url = URL(string: "https://7shifts.github.io/mobile-takehome/api/food_item_categories.json")!
+        let (data, _) = try await URLSession.shared.data(from: url)
+        let decoder = JSONDecoder()
+        return try decoder.decode([Category].self, from: data)
     }
 }
