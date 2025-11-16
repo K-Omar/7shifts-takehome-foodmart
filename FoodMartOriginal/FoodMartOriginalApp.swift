@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct FoodMartOriginalApp: App {
+    @StateObject private var foodViewModel = FoodViewModel()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(foodViewModel)
         }
     }
 }
