@@ -6,11 +6,27 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		476294CF2ECA99CC00F0A5C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 47FBB4802EC568F3000E1F63 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 47FBB4872EC568F3000E1F63;
+			remoteInfo = FoodMartOriginal;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		476294CB2ECA99CC00F0A5C2 /* FoodMartOriginalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodMartOriginalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		47FBB4882EC568F3000E1F63 /* FoodMartOriginal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodMartOriginal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		476294CC2ECA99CC00F0A5C2 /* FoodMartOriginalTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = FoodMartOriginalTests;
+			sourceTree = "<group>";
+		};
 		47FBB48A2EC568F3000E1F63 /* FoodMartOriginal */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = FoodMartOriginal;
@@ -19,6 +35,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		476294C82ECA99CC00F0A5C2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		47FBB4852EC568F3000E1F63 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -33,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				47FBB48A2EC568F3000E1F63 /* FoodMartOriginal */,
+				476294CC2ECA99CC00F0A5C2 /* FoodMartOriginalTests */,
 				47FBB4892EC568F3000E1F63 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				47FBB4882EC568F3000E1F63 /* FoodMartOriginal.app */,
+				476294CB2ECA99CC00F0A5C2 /* FoodMartOriginalTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,6 +73,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		476294CA2ECA99CC00F0A5C2 /* FoodMartOriginalTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 476294D32ECA99CC00F0A5C2 /* Build configuration list for PBXNativeTarget "FoodMartOriginalTests" */;
+			buildPhases = (
+				476294C72ECA99CC00F0A5C2 /* Sources */,
+				476294C82ECA99CC00F0A5C2 /* Frameworks */,
+				476294C92ECA99CC00F0A5C2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				476294D02ECA99CC00F0A5C2 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				476294CC2ECA99CC00F0A5C2 /* FoodMartOriginalTests */,
+			);
+			name = FoodMartOriginalTests;
+			packageProductDependencies = (
+			);
+			productName = FoodMartOriginalTests;
+			productReference = 476294CB2ECA99CC00F0A5C2 /* FoodMartOriginalTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		47FBB4872EC568F3000E1F63 /* FoodMartOriginal */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 47FBB4932EC568F4000E1F63 /* Build configuration list for PBXNativeTarget "FoodMartOriginal" */;
@@ -80,6 +128,10 @@
 				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 2600;
 				TargetAttributes = {
+					476294CA2ECA99CC00F0A5C2 = {
+						CreatedOnToolsVersion = 26.0;
+						TestTargetID = 47FBB4872EC568F3000E1F63;
+					};
 					47FBB4872EC568F3000E1F63 = {
 						CreatedOnToolsVersion = 26.0;
 					};
@@ -100,11 +152,19 @@
 			projectRoot = "";
 			targets = (
 				47FBB4872EC568F3000E1F63 /* FoodMartOriginal */,
+				476294CA2ECA99CC00F0A5C2 /* FoodMartOriginalTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		476294C92ECA99CC00F0A5C2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		47FBB4862EC568F3000E1F63 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -115,6 +175,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		476294C72ECA99CC00F0A5C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		47FBB4842EC568F3000E1F63 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -124,7 +191,62 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		476294D02ECA99CC00F0A5C2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 47FBB4872EC568F3000E1F63 /* FoodMartOriginal */;
+			targetProxy = 476294CF2ECA99CC00F0A5C2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		476294D12ECA99CC00F0A5C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 32766RC2G3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.omarchaudhry.FoodMartOriginalTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FoodMartOriginal.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FoodMartOriginal";
+			};
+			name = Debug;
+		};
+		476294D22ECA99CC00F0A5C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 32766RC2G3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.omarchaudhry.FoodMartOriginalTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FoodMartOriginal.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FoodMartOriginal";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		47FBB4912EC568F4000E1F63 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -332,6 +454,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		476294D32ECA99CC00F0A5C2 /* Build configuration list for PBXNativeTarget "FoodMartOriginalTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				476294D12ECA99CC00F0A5C2 /* Debug */,
+				476294D22ECA99CC00F0A5C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		47FBB4832EC568F3000E1F63 /* Build configuration list for PBXProject "FoodMartOriginal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
