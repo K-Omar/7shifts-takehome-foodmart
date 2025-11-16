@@ -13,7 +13,7 @@ struct FoodItemView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            AsyncImage(url: URL(string: food.imageUrl)!) { phase in
+            AsyncImage(url: URL(string: food.imageUrl)) { phase in
                 switch phase {
                 case .empty:
                     ProgressView()
@@ -30,7 +30,7 @@ struct FoodItemView: View {
             .clipShape(.rect(cornerRadius: 10))
             
             VStack(alignment: .leading) {
-                Text(food.price, format: .currency(code: "USD").presentation(.narrow))
+                Text(food.price, format: .currency(code: "CAD").presentation(.narrow))
                     .font(.title3)
                     .fontWeight(.medium)
                 
@@ -44,6 +44,15 @@ struct FoodItemView: View {
             }
         }
         .frame(maxWidth: .infinity)
+        .onAppear {
+            print("Food: \(food.name)")
+            print("Image URL: \(food.imageUrl)")
+            if let url = URL(string: food.imageUrl) {
+                print("URL is valid: \(url)")
+            } else {
+                print("Invalid URL!")
+            }
+        }
     }
 }
 

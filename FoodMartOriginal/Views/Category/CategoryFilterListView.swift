@@ -13,20 +13,26 @@ struct CategoryFilterListView: View {
     @State private var categories = [Category]()
     
     var body: some View {
-        List($foodViewModel.categories) { $category in
-            Toggle(isOn: $category.isEnabled) {
-                Text(category.name)
-            }
+        List($foodViewModel.categories, rowContent: CategoryRow.init)
+            .presentationDetents([.medium])
+            .presentationDragIndicator(.visible)
+    }
+}
+
+struct CategoryRow: View {
+    @Binding var category: Category
+    
+    var body: some View {
+        Toggle(isOn: $category.isEnabled) {
+            Text(category.name)
         }
-        .presentationDetents([.medium])
-        .presentationDragIndicator(.visible)
     }
 }
 
 #Preview {
-    let viewModel = FoodViewModel()
+    @Previewable @StateObject var viewModel = FoodViewModel()
     
-    return CategoryFilterListView()
+    CategoryFilterListView()
         .environmentObject(viewModel)
         .task {
             await viewModel.loadFoods()

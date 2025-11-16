@@ -28,14 +28,14 @@ struct FoodItemListView: View {
 }
 
 #Preview {
-    let viewModel = FoodViewModel()
+    @Previewable @StateObject var viewModel = FoodViewModel()
     
-    return ScrollView {
+    ScrollView {
         FoodItemListView()
             .task {
                 await viewModel.loadFoods()
                 await viewModel.loadCategories()
             }
     }
-    .environmentObject(viewModel) 
+    .environmentObject(viewModel)
 }
