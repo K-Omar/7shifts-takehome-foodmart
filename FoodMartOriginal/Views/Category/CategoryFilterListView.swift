@@ -19,15 +19,7 @@ struct CategoryFilterListView: View {
     }
 }
 
-struct CategoryRow: View {
-    @Binding var category: Category
-    
-    var body: some View {
-        Toggle(isOn: $category.isEnabled) {
-            Text(category.name)
-        }
-    }
-}
+
 
 #Preview {
     @Previewable @StateObject var viewModel = FoodViewModel()

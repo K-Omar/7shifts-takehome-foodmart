@@ -27,6 +27,12 @@ class FoodViewModel: ObservableObject {
         return enabledCategoryUuids.isEmpty ? foods : foods.filter { enabledCategoryUuids.contains($0.categoryUuid) }
     }
     
+    private var urlSession: any DataFetching
+    
+    init(session: any DataFetching = URLSession.shared) {
+        self.urlSession = session
+    }
+    
     func loadAppData() async {
         loadState = .loading
         
@@ -54,14 +60,14 @@ class FoodViewModel: ObservableObject {
     
     private func loadFoods() async throws -> [Food] {
         let url = URL(string: "https://7shifts.github.io/mobile-takehome/api/food_items.json")!
-        let (data, _) = try await URLSession.shared.data(from: url)
+        let (data, _) = try await urlSession.data(from: url)
         let decoder = JSONDecoder()
         return try decoder.decode([Food].self, from: data)
     }
     
     private func loadCategories() async throws -> [Category] {
         let url = URL(string: "https://7shifts.github.io/mobile-takehome/api/food_item_categories.json")!
-        let (data, _) = try await URLSession.shared.data(from: url)
+        let (data, _) = try await urlSession.data(from: url)
         let decoder = JSONDecoder()
         return try decoder.decode([Category].self, from: data)
     }

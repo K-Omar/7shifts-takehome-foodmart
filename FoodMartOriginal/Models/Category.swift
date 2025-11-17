@@ -19,4 +19,10 @@ struct Category: Codable, Hashable, Identifiable {
         case uuid
         case name 
     }
+    
+    static let example = Category(
+        uuid: "b1f6d8a5-0e29-4d70-8d4f-1f8c1d7a5b12",
+        name: "Produce",
+        isEnabled: false
+    )
 }
