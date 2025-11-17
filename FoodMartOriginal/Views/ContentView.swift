@@ -29,6 +29,8 @@ struct ContentView: View {
                         FoodItemListView()
                             .sheet(isPresented: $isShowingCategoryFilters) {
                                 CategoryFilterListView()
+                                    .presentationDetents([.medium])
+                                    .presentationDragIndicator(.visible)
                             }
                             .toolbar {
                                 categoryFilterButton

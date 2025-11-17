@@ -12,8 +12,6 @@ struct CategoryFilterListView: View {
     
     var body: some View {
         List($foodViewModel.categories, rowContent: CategoryRow.init)
-            .presentationDetents([.medium])
-            .presentationDragIndicator(.visible)
     }
 }
 
