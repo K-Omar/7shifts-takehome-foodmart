@@ -10,16 +10,12 @@ import SwiftUI
 struct CategoryFilterListView: View {
     @EnvironmentObject var foodViewModel: FoodViewModel
     
-    @State private var categories = [Category]()
-    
     var body: some View {
         List($foodViewModel.categories, rowContent: CategoryRow.init)
             .presentationDetents([.medium])
             .presentationDragIndicator(.visible)
     }
 }
-
-
 
 #Preview {
     @Previewable @StateObject var viewModel = FoodViewModel()

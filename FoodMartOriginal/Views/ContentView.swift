@@ -22,7 +22,7 @@ struct ContentView: View {
                     )
                     
                 default:
-                    if isLoading {
+                    if hasNoData {
                         ProgressView()
                             .controlSize(.extraLarge)
                     } else {
@@ -31,9 +31,7 @@ struct ContentView: View {
                                 CategoryFilterListView()
                             }
                             .toolbar {
-                                ToolbarItem(placement: .topBarTrailing) {
-                                    categoryFilterButton
-                                }
+                                categoryFilterButton
                             }
                     }
                 }
@@ -52,7 +50,7 @@ struct ContentView: View {
         }
     }
     
-    var isLoading: Bool {
+    var hasNoData: Bool {
         foodViewModel.categories.isEmpty || foodViewModel.foods.isEmpty
     }
 }

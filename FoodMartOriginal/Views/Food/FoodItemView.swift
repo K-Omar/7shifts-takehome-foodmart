@@ -13,27 +13,7 @@ struct FoodItemView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            AsyncImage(url: URL(string: food.imageUrl)) { phase in
-                switch phase {
-                case .empty:
-                    ZStack {
-                        Rectangle()
-                            .fill(.secondary.opacity(0.5))
-                            .aspectRatio(1, contentMode: .fit)
-                        
-                        ProgressView()
-                    }
-                case .success(let image):
-                    image
-                        .resizable()
-                        .scaledToFit()
-                default:
-                    Image(systemName: "photo")
-                        .resizable()
-                        .scaledToFit()
-                }
-            }
-            .clipShape(.rect(cornerRadius: 10))
+            foodImage
             
             VStack(alignment: .leading) {
                 Text(food.price, format: .currency(code: "CAD").presentation(.narrow))
@@ -49,6 +29,30 @@ struct FoodItemView: View {
             }
         }
         .frame(maxWidth: .infinity)
+    }
+    
+    var foodImage: some View {
+        AsyncImage(url: URL(string: food.imageUrl)) { phase in
+            switch phase {
+            case .empty:
+                ZStack {
+                    Rectangle()
+                        .fill(.secondary.opacity(0.5))
+                        .aspectRatio(1, contentMode: .fit)
+                    
+                    ProgressView()
+                }
+            case .success(let image):
+                image
+                    .resizable()
+                    .scaledToFit()
+            default:
+                Image(systemName: "photo")
+                    .resizable()
+                    .scaledToFit()
+            }
+        }
+        .clipShape(.rect(cornerRadius: 10))
     }
 }
 

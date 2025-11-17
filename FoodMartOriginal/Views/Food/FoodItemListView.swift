@@ -10,12 +10,10 @@ import SwiftUI
 struct FoodItemListView: View {
     @EnvironmentObject var foodViewModel: FoodViewModel
     
-    @State private var foods = [Food]()
-    
     let columns = [
-            GridItem(.flexible(), spacing: 16),
-            GridItem(.flexible(), spacing: 16),
-        ]
+        GridItem(.flexible(), spacing: 16),
+        GridItem(.flexible(), spacing: 16),
+    ]
     
     var body: some View {
         ScrollView {

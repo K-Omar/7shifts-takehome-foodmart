@@ -10,6 +10,7 @@ import SwiftUI
 struct LoadFailedView: View {
     var error: (any Error)?
     var retry: () async -> Void
+    
     var body: some View {
         ContentUnavailableView {
             Text("Oops...")

@@ -21,6 +21,8 @@ class FoodViewModel: ObservableObject {
     @Published var categories = [Category]()
     @Published var foods = [Food]()
     
+    /// The array of foods that matches the user's category filters, or all foods
+    /// if no category filter is enabled.
     var filteredFoods: [Food] {
         let enabledCategoryUuids = Set(categories.filter(\.isEnabled).map(\.uuid))
         
@@ -42,7 +44,6 @@ class FoodViewModel: ObservableObject {
             
             let (foods, categories) = try await (foodsData, categoriesData)
             
-            // Update the published properties
             self.foods = foods
             self.categories = categories
             
